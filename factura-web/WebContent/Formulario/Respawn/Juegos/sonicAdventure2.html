@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" href="../css/estilos.css">
+	<title>Sonic Adventure 2</title>
+	<meta charset="utf-8">
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="main.js"></script>
+
+</head>
+
+
+<!-- INICIAR SESIÓN -->
+<?php
+
+session_start();    
+include("../Registro/config.php");
+
+if(isset($_POST['iniciarsesion']))
+{
+    if(isset($_POST['userlogin']) && !empty($_POST['userlogin']) &&
+       isset($_POST['pwlogin']) && !empty($_POST['pwlogin']))
+    {
+
+            $sqldos = "SELECT Usuario,Contrasena FROM usuarios WHERE Usuario='$_POST[userlogin]'";
+            $recdos = mysqli_query($conexion,$sqldos);
+
+            $sesion = mysqli_fetch_array($recdos);
+
+            if(password_verify($_POST['pwlogin'], $sesion['Contrasena']))
+            {
+                $_SESSION['username'] = $_POST['userlogin'];
+                header("location: ../Registro/formulario.php");
+            }
+            else
+            {
+                echo '<meta http-equiv="Refresh" content="0;URL=../Registro/error.html">';
+            }
+
+    }
+    else
+    {
+        echo '<meta http-equiv="Refresh" content="0;URL=../Registro/error.html">';
+    }
+}
+?>
+
+
+
+<!-- Inicio Sesión -->
+<header>	
+
+<a href="#"><logo id="logo"><img src="../images/logo.png"></logo></a> 
+
+<form method="POST" action="">
+
+<div style="position: absolute; top: 90px; left: 130px;">
+<input id="usubox" type="text" name="userlogin" size="15" maxlength="20" placeholder="Usuario">
+<input id="usupass" type="password" name="pwlogin" size="15" maxlength="20" placeholder="Contrase&ntilde;a">	
+</div>
+
+
+<input id="button" type="submit" name="iniciarsesion" value="Iniciar Sesión" style="position: relative; left: 1200px; top: -67px;">
+</input><br><br>
+
+</form>
+
+
+<div style="position: relative; top: -15px; left: -10px;">
+	
+<font face="Tw Cen MT" id="forget" size="2"><a href="Registro/recuperacion.html" style="text-decoration: none; color: white;">He olvidado mi cuenta</a></font>
+<font face="Tw Cen MT" id="password" size="2"><a href="#" style="text-decoration: none; color: white;">Cambiar mi contraseña</a></font>
+
+</div>
+
+<font face="Tw Cen MT" id="password" size="2">
+<a href="#" style="text-decoration: none; color: white; position: absolute; left: -760px; top: -40px;">Live too Fast !</a></font>
+
+</header>
+
+
+
+<body>
+
+
+	<!-- Pagina Blanco-->
+	<div style="position: relative; background-color: #FFFFFF; height: 680px; width: 80%; left: 150px; top: 60px;"></div>
+
+
+	<div style="position: absolute; top: 170px; left: 180px; width: 0%;"><img src="../images/Juegos/Adventure2/1.jpg"></div>
+
+
+
+
+
+	<div style="position: relative; top: -580px; left: 700px; width: 20%;"><font face="Tw Cen MT">
+	Titulo: Sonic Adventure Battle 2<br>
+	Idioma: Español, inglés, Japones<br>
+	Tamaño: 625 Mb<br>
+	Servidor: Mega<br>
+	Genero: acción<br>
+	Año: 1992<br>
+	<br>
+	<br>
+	<br>
+	Descargar
+
+    </font></div>
+
+
+
+
+	<div style="position: relative; top: -480px; left: 180px; width: 80%;"><font face="Tw Cen MT">
+
+	Podríamos decir que Sonic Adventure Battle 2 fue uno de los juegos que alcanzó el éxito en las plataformas y en 3D de aquellos años. hablamos de un juego<br> 
+	distinguido entre otros Sonic's porque, SA2 tiene algo que muchos otros juegos no posee, personajes cárismaticos llenos de personalidad, cada uno con una historia<br>
+	y todos finalmente colapsan y se unén para detener un enorme caos, y si definitivamente aquí nos encontramos con un juego de Sonic de calidad, lleno de acción e<br> 
+	intensidad. Sonic Adventure Battle 2 es un juego con una jugabilidad destacada, el juego esta bien logrado gráficamente y sus argumentos sólidos y emocionantes.<br>
+	 y es que el juego lo tiene todo, batallas, acción, historia, acciones inesperadas, emoción y mucha fuerza, Sonic Adventure Battle 2 es una maravilla de juego. recomendadisimo para todos quienés estan conociendo a Sonic, y ya puedes obtenerlo gratis aquí en Sonic Zone.
+
+	</div>
+
+	
+	<div style="background-position: fixed; position: absolute; top: 600px; left: 700px; width: 0%;"><img src="../images/Juegos/Adventure2/2.png"></div>
+	<div style="background-position: fixed; position: absolute; top: 600px; left: 900px; width: 0%;"><img src="../images/Juegos/Adventure2/3.jpg"></div>
+	<div style="background-image: fixed; position: absolute; top: 600px; left: 500px; width: 0%;"><img src="../images/Juegos/Adventure2/4.jpg"></div>
+	<div style="background-image: fixed; position: absolute; top: 600px; left: 300px; width: 0%;"><img src="../images/Juegos/Adventure2/5.png"></div>
+
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,131 @@
+
+
+/**  ====================================================================================== PAGINA PRINCIPAL **/
+
+header
+{
+	position: relative;
+	top: -0px;
+	background: #1C1C1C;
+	height: 90px;
+}
+
+body{
+
+	font-family: 'Open sans';
+	background-color: #D4D4D4;
+	margin: 0;
+}
+
+footer
+{
+	position: relative;
+	top: 0px;
+	background: #1C1C1C;
+	height: 100px;
+}
+
+
+/** Header **/
+
+#forget
+{
+	position: relative;
+	left: 900px;
+	top: -65px;
+	color: white;
+	width: 20%;
+}
+
+#password
+{
+	position: relative;
+	left: 935px;
+	top: -65px;
+	color: white;
+	width: 20%;
+}
+
+
+
+
+#logo
+{
+	position: relative;
+	left: 70px;
+	top: -5px;
+}
+
+
+#fotext
+{
+	position: relative;
+	top: 40px;
+}
+
+
+/** Inicio Sesión **/
+
+#button
+{
+	position: relative;
+	left: 800px;
+	top: -50px;
+}
+
+#usubox
+{
+	position: relative;
+	left: 760px;
+	top: -50px;
+}
+
+#usupass
+{
+	position: relative;
+	left: 770px;
+	top: -50px;
+}
+
+
+/** Footer **/
+
+#facebook
+{
+	position: relative;
+	left: 900px;
+	top: -5px;
+}
+
+#whatsapp
+{
+	position: relative;
+	left: 940px;
+	top: 5px;
+}
+
+#num
+{
+	position: relative;
+	left: 940px;
+	top: -10px;
+}
+
+#face
+{
+	position: relative;
+	left: 910px;
+	top: -10px;
+}
+
+
+/** ======================================================================================  REGISTRARSE **/	
+
+
+#name
+{
+	position: relative;
+	top:20px;
+	left: 400px;
+}
+

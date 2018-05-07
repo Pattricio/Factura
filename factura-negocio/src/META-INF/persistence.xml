@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<!--	Se establece el nombre de la unidad de persistencia, se referencia con el objeto EntityManager -->
+	<persistence-unit name="basePersist">
+	
+		<!--Framework a utilizar para el manejo con la base de datos -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<!--Nombre del Data Source creado en el servidor -->
+		<jta-data-source>java:/facturaDS</jta-data-source>
+		
+		<!--Lista de entidades que se crearan en la base de datos -->
+		<class>cl.stomas.factura.entidades.Factura</class>
+		<class>cl.stomas.factura.entidades.Producto</class>
+		<class>cl.stomas.factura.entidades.Empresa</class>
+		
+		<!--Propiedades de conexion -->
+		<properties>
+		
+			<!--Corresponde al tipo de lenguaje a utilizar, para poder entablar comunicacion con la base de datos -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			
+			<!-- Metodo que realizara cuando se ejecute el servedor, update verificara 
+				las tablas y las que no existen las creara, select solo consultara las tablas -->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			
+			<!-- Opcion para mostrar o no las consultas SQL q	ue realiza el sistema -->
+			<property name="hibernate.show_sql" value="false"/>
+		</properties>
+	</persistence-unit>
+	
+</persistence>

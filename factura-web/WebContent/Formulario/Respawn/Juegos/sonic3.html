@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" href="../css/estilos.css">
+	<title>Sonic 3</title>
+	<meta charset="utf-8">
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="main.js"></script>
+
+</head>
+
+<!-- INICIAR SESIÓN -->
+<?php
+
+session_start();    
+include("Registro/config.php");
+
+if(isset($_POST['iniciarsesion']))
+{
+    if(isset($_POST['userlogin']) && !empty($_POST['userlogin']) &&
+       isset($_POST['pwlogin']) && !empty($_POST['pwlogin']))
+    {
+
+            $sqldos = "SELECT Usuario,Contrasena FROM usuarios WHERE Usuario='$_POST[userlogin]'";
+            $recdos = mysqli_query($conexion,$sqldos);
+
+            $sesion = mysqli_fetch_array($recdos);
+
+            if(password_verify($_POST['pwlogin'], $sesion['Contrasena']))
+            {
+                $_SESSION['username'] = $_POST['userlogin'];
+                header("location: Registro/formulario.php");
+            }
+            else
+            {
+                echo '<meta http-equiv="Refresh" content="0;URL=Registro/error.html">';
+            }
+
+    }
+    else
+    {
+        echo '<meta http-equiv="Refresh" content="0;URL=Registro/error.html">';
+    }
+}
+?>
+
+
+
+
+<!-- Inicio Sesión -->
+<header>	
+
+<a href="#"><logo id="logo"><img src="images/logo.png"></logo></a> 
+
+<form method="POST" action="">
+
+<div style="position: absolute; top: 90px; left: 130px;">
+<input id="usubox" type="text" name="userlogin" size="15" maxlength="20" placeholder="Usuario">
+<input id="usupass" type="password" name="pwlogin" size="15" maxlength="20" placeholder="Contrase&ntilde;a">	
+</div>
+
+
+<input id="button" type="submit" name="iniciarsesion" value="Iniciar Sesión" style="position: relative; left: 1200px; top: -67px;">
+</input><br><br>
+
+</form>
+
+
+<div style="position: relative; top: -15px; left: -10px;">
+	
+<font face="Tw Cen MT" id="forget" size="2"><a href="Registro/recuperacion.html" style="text-decoration: none; color: white;">He olvidado mi cuenta</a></font>
+<font face="Tw Cen MT" id="password" size="2"><a href="#" style="text-decoration: none; color: white;">Cambiar mi contraseña</a></font>
+
+</div>
+
+<font face="Tw Cen MT" id="password" size="2">
+<a href="#" style="text-decoration: none; color: white; position: absolute; left: -760px; top: -40px;">Live too Fast !</a></font>
+
+</header>
+
+
+
+
+<body background="../images/backgrounds/2.jpg">
+
+
+	<!-- Pagina Blanco-->
+	<div style="position: relative; background-color: #FFFFFF; height: 680px; width: 80%; left: 150px; top: 60px;"></div>
+
+
+	<div style="position: absolute; top: 170px; left: 180px; width: 0%;"><img src="../images/Juegos/Sonic3/1.jpg"></div>
+
+
+
+
+
+	<div style="position: relative; top: -580px; left: 700px; width: 20%;"><font face="Tw Cen MT">
+	Titulo: Sonic The Hedgehog 3<br>
+	Idioma: Español, inglés, Japones<br>
+	Tamaño: 625 Mb<br>
+	Servidor: Mega<br>
+	Genero: acción<br>
+	Año: 1994<br>
+	<br>
+	<br>
+	<br>
+	Descargar
+
+    </font></div>
+
+
+
+
+	<div style="position: relative; top: -480px; left: 180px; width: 80%;"><font face="Tw Cen MT">
+	Al final de sonic the hedgehog 2 el death egg fue destruido por sonic con ayuda de tails, sin embargo
+	Death Egg se estrelló en Angel Island. es una isla con<br>
+    propiedades especiales, la cual se mantiene en el aire gracias al poder de las Esmeraldas del Caos, dichas joyas están custodiadas por Knuckles el Equidna<br>
+    que piensa que Sonic y Tails quieren robarlas, gracias a las mentiras del Dr. Robotnik. Quién intentará conseguirlas por su cuenta para volver a poner en marcha<br>
+    su base espacial Death Egg. Lanzado a america el 2 de febrero de 1994 Sonic vuelve en su tercera entrega de la saga con mayores remodelaciones en gráficos<br>
+    y colores sonic se embarca a esta entrega muy popular nombrada como la mas completa junto a Sonic 3 & Knuckles en lo que pertenece a este género</font></div>
+
+	
+	<div style="background-position: fixed; position: absolute; top: 600px; left: 700px; width: 0%;"><img src="../images/Juegos/Sonic3/2.png"></div>
+	<div style="background-position: fixed; position: absolute; top: 600px; left: 900px; width: 0%;"><img src="../images/Juegos/Sonic3/3.png"></div>
+	<div style="background-image: fixed; position: absolute; top: 600px; left: 500px; width: 0%;"><img src="../images/Juegos/Sonic3/4.png"></div>
+	<div style="background-image: fixed; position: absolute; top: 600px; left: 300px; width: 0%;"><img src="../images/Juegos/Sonic3/5.png"></div>
+
+
+</body>
+
+
+
+
+</html>

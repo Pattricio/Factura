@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+	<link rel="stylesheet" href="css/estilos.css">
+	<link rel="stylesheet" href="Registro/login.php">
+	<title>Sonic Zone</title>
+	<meta charset="utf-8">
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="main.js"></script>
+
+</head>
+
+<!-- INICIAR SESIÓN -->
+<?php
+
+session_start();    
+include("config.php");
+
+if(isset($_POST['iniciarsesion']))
+{
+    if(isset($_POST['userlogin']) && !empty($_POST['userlogin']) &&
+       isset($_POST['pwlogin']) && !empty($_POST['pwlogin']))
+    {
+
+            $sqldos = "SELECT Usuario,Contrasena FROM usuarios WHERE Usuario='$_POST[userlogin]'";
+            $recdos = mysqli_query($conexion,$sqldos);
+
+            $sesion = mysqli_fetch_array($recdos);
+
+            if(password_verify($_POST['pwlogin'], $sesion['Contrasena']))
+            {
+                $_SESSION['username'] = $_POST['userlogin'];
+                header("location: index.php");
+            }else{
+                echo "<br/>";
+                echo "Conbinacion erronea.";
+            }
+
+    }else{
+        echo "<br/>";
+        echo "Debes llenar ambos campos.";
+    }
+}
+
+?>
+
+<!-- Inicio Sesión -->
+
+<header>	
+
+<logo id="logo"> <img src="images/logo.png"></logo>
+
+<input id="usubox" type="text" name="userlogin" size="15" maxlength="20" placeholder="Usuario">
+<input id="usupass" type="password" name="pwlogin" size="15" maxlength="20" placeholder="Contrase&ntilde;a">
+
+<button id="button" type="submit" name="enter">Entrar</button><br><br>
+
+<font face="Tw Cen MT" id="forget" size="2"><a href="Registro/recuperacion.html" style="text-decoration: none; color: white;">He olvidado mi cuenta</a></font>
+<font face="Tw Cen MT" id="password" size="2"><a href="#" style="text-decoration: none; color: white;">Cambiar mi contraseña</a></font>
+
+<font face="Tw Cen MT" id="password" size="2"><a href="#" style="text-decoration: none; color: white; position: relative; left: -1020px;">Live too Fast !</a></font>
+
+</header>
+
+
+<div style="position: relative; top: 100px; left: 100px; width: 10%; height: 0%; padding: 0; margin: 0;">
+
+<div id="registro" style="position: relative; top: -30px; left: -10px;"><a href="Registro/registro.html"><img src="images/registrate.png"></a></div>
+
+<font face="Tw Cen MT"><a href="Juegos/juegos.html" style="text-decoration: none; color: white;">Menu Principal</a></font><br>
+<font face="Tw Cen MT"><a href="Juegos/juegos.html" style="text-decoration: none; color: white;">-------------</a></font><br>
+<font face="Tw Cen MT"><a href="Juegos/juegos.html" style="text-decoration: none; color: white;">Noticias</a></font><br>
+<font face="Tw Cen MT"><a href="Juegos/juegos.html" style="text-decoration: none; color: white;">Juegos</a></font><br>
+<font face="Tw Cen MT"><a href="Juegos/juegos.html" style="text-decoration: none; color: white;">Música</a></font><br>
+<font face="Tw Cen MT"><a href="Juegos/juegos.html" style="text-decoration: none; color: white;">Comic's</a></font><br>
+<font face="Tw Cen MT"><a href="Juegos/juegos.html" style="text-decoration: none; color: white;">Contacto</a></font><br>
+
+</div>
+
+
+
+
+<body background="images/Backgrounds/body1.jpg">
+
+
+
+	<div class="wrap">
+		<ul class="tabs">
+			<li><a href="#tab1"><span font face="Tw Cen MT" size=3 color="black" class="tab-text">Sonic Zone</span></a></li>
+			<li><a href="#tab2"></span><span font face="Tw Cen MT" size=3 color="black" class="tab-text">Juegos</span></a></li>
+			<li><a href="#tab3"></span><span font face="Tw Cen MT" size=3 color="black" class="tab-text">Música</span></a></li>
+			<li><a href="#tab4"></span><span font face="Tw Cen MT" size=3 color="black" class="tab-text">Noticias</span></a></li>
+			<li><a href="#tab5"></span><span font face="Tw Cen MT" size=3 color="black" class="tab-text">Contacto</span></a></li>
+		</ul>
+
+		<div class="secciones">
+
+			<article id="tab1" style="position: relative; top: 150px;">
+				<font face="Tw Cen MT" size=3 color="black">
+					<hr>
+					<font face="Tw Cen MT" size=3 color="black" style="position: relative; top: 30px;">
+					Bienvenido a la página oficial de Sonic Zone.<br>
+					Aquí podrás acceder al contenido gratuito de <br>
+					Sonic The Hedgehog, las descargas de Juegos <br>
+					Discografías, Comic's y otras noticias acerca <br>
+					de Sonic The Hedgehog, recuerda también formar <br>
+					parte de nuestra comunidad en facebook donde <br>
+					también escucharémos tus inquietudes, ahora <br>
+					no esperes más y busca todo el contenido que <br>
+					buscabás completamente gratis.	
+					</font>
+
+					<div class="slider" style="position: relative; top: -150px;">
+  					    <ul>
+  						<li><img src="images/Slider/1.jpg"></li>
+  						<li><img src="images/Slider/2.png"></li>
+  						<li><img src="images/Slider/3.jpg"></li>
+  						<li><img src="images/Slider/4.jpg"></li>
+  						</ul>
+  					</div>
+  					<hr style="position: relative; top: -140px;">
+				</font>
+			</article>
+
+		<article id="tab2">
+		<font face="Tw Cen MT" size=3 color="black">
+					<hr>
+					<font face="Tw Cen MT" size=3 color="black" style="position: relative; top: 30px;">
+					Descubre los juegos que podrás descargar desde.<br>
+					la página, aquí los encontrarás todos, debes<br>
+					asegurarte de que tendrás los recursos y el <br>
+					ordenador bien equipado para jugarlos todos y<br>
+					tranquilo ! que si algún enlace o alguno de los<br>
+					juegos no te funcionan siempre podrás contactarme <br>
+					te ayudaré o al menos te diré que ordenador vas<br>
+					a necesitar para que tu juego funcioone, las<br>
+					descargas son gratuitas !.	
+					</font>
+
+					<div class="slider" style="position: relative; top: -150px;">
+  					    <ul>
+  						<li><img src="images/Slider/5.jpg"></li>
+  						<li><img src="images/Slider/6.jpg"></li>
+  						<li><img src="images/Slider/7.jpg"></li>
+  						<li><img src="images/Slider/8.jpg"></li>
+  						</ul>
+  					</div>
+  					<hr style="position: relative; top: -140px;">
+				</font>
+			</article>
+
+		
+		<article id="tab3" style="position: relative; top: 150px;">
+		<font face="Tw Cen MT" size=3 color="black">
+					<hr>
+					<font face="Tw Cen MT" size=3 color="black" style="position: relative; top: 30px;">
+					Te gustan las canciones que cantan detrás de<br>
+					cada escena en cada juego o los efectos de sonido<br>
+					dentro del mundo de Sonic, pués los artistas de<br>
+					dichas canciones tienen un montón de discografías<br>
+					que podrás encontrar aquí, busca la discografía<br>
+					que te gusta y descargala podrás apreciar el<br>
+					Rock de Crush 40 en toda su luz, además podrás<br>
+					descargar los soundtrackas de cada escene y es<br>
+					completamente gratis.	
+					</font>
+
+					<div class="slider" style="position: relative; top: -150px;">
+  					    <ul>
+  						<li><img src="images/Slider/9.jpg"></li>
+  						<li><img src="images/Slider/10.jpg"></li>
+  						<li><img src="images/Slider/11.jpg"></li>
+  						<li><img src="images/Slider/12.jpg"></li>
+  						</ul>
+  					</div>
+  					<hr style="position: relative; top: -140px;">
+				</font>
+			</article>
+
+			<article id="tab4">
+				<font face="Tw Cen MT" size=3 color="black">Noticias</font><br><br><br>
+
+				<!-- Noticia 01 -->
+				<img src="images/Noticias/menu.jpg" style="position: relative; width: 10%; top: -10px;">
+
+				<div style="position: relative; top: -80px; left: 85px;"><font face="Tw Cen MT" size=3 color="black">
+				Sabías que el aclamado Sonic Manía fue un éxito dentro del fandom ?, Muchos esperaban con ansías el<br>
+				regreso del querido erizo y logró debutar con gran éxito dentro del mercado y entre los fans<br>
+				regreso del querido erizo y logró debutar con gran éxito dentro del mercado y entre los fans<br>
+				enterate de las novedades y algunas opiniones de los fans respecto a esta nueva entrega. 
+				<a href="#" style="text-decoration: none;"><font face="Tw Cen MT" size=3 color="blue">entrar</font></a></font><br></div>
+				<div style="position: relative; top: -50px;"><hr></div>
+
+				<!-- Noticia 02 -->
+				<img src="images/Noticias/menu2.jpg" style="position: relative; width: 10%; top: -30px;">
+				<div style="position: relative; top: -100px; left: 85px;"><font face="Tw Cen MT" size=3 color="black">
+				Ya se viene Sonic Forces ! la nueva aventura de Sonic y compañía, que aventuras les esperará a nuestros<br>
+				amigos ? novedades y enemigos increíbles podremos explorar en Sonic Forces todo esto y mas descubrelo<br> 
+				regreso del querido erizo y logró debutar con gran éxito dentro del mercado y entre los fans<br>
+				regreso del querido erizo y logró debutar con gran éxito dentro del mercado y entre los fans<br>
+				<a href="#" style="text-decoration: none;"><font face="Tw Cen MT" size=3 color="blue">entrar</font></a></font><br>
+				<hr style="position: relative; left: -90px; top: 20px;">
+			    </div>
+
+
+						
+			</article>
+
+			<article id="tab5">
+
+				<hr>
+				<br>
+					<div><font face="Tw Cen MT" size=3 color="black" style="position: relative; top: 20px; left: 400px;">
+					Siguenos a través de facebook ! y ayudanos<br> 
+					con un like, y se parte de la gran comunidad<br> 
+					que con muucho esfuerzo se mantiene bastante<br> 
+					unida. y comparte tus opiniones referente a<br>
+					Sonic y además participa u organiza tus propios<br>
+					eventos y gana los especiales que harémos en<br> 
+					la comunidad. además atenderemos tus dudas o<br> 
+					sobre algún pedido que haga falta.</font></div>
+			
+		<!--LIKE BOX-->
+        <div id="b_col3" style="position: relative; left: -0px; top: -120px;">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSonicZonex%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <!--LIKE BOX-->
+      	<div style="position: relative; left: 0px; top: 55px;"><hr></div> 
+			</article>
+
+		</div>
+	</div>
+
+
+</body>
+
+<br>
+<br>
+<footer style="position: relative; top: 70px;">
+
+<center><p id="fotext" style="color: white;">Sonic Zone. diseño hecho por sonic, 2017</p></center>
+
+<img id="facebook" src="images/face.png"> <font face="Tw Cen MT" id="face" size="3" style="color: white">SonicZone.facebook.com</font>
+<img id="whatsapp" src="images/whats.png"> <font face="Tw Cen MT" id="num" size="3" style="color: white">+569 66503979</font>
+
+</footer>
+
+</html>

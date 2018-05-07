@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" href="../css/estilos.css">
+	<title>Sonic Adventure</title>
+	<meta charset="utf-8">
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="main.js"></script>
+
+</head>
+
+<!-- INICIAR SESIÓN -->
+<?php
+
+session_start();    
+include("Registro/config.php");
+
+if(isset($_POST['iniciarsesion']))
+{
+    if(isset($_POST['userlogin']) && !empty($_POST['userlogin']) &&
+       isset($_POST['pwlogin']) && !empty($_POST['pwlogin']))
+    {
+
+            $sqldos = "SELECT Usuario,Contrasena FROM usuarios WHERE Usuario='$_POST[userlogin]'";
+            $recdos = mysqli_query($conexion,$sqldos);
+
+            $sesion = mysqli_fetch_array($recdos);
+
+            if(password_verify($_POST['pwlogin'], $sesion['Contrasena']))
+            {
+                $_SESSION['username'] = $_POST['userlogin'];
+                header("location: Registro/formulario.php");
+            }
+            else
+            {
+                echo '<meta http-equiv="Refresh" content="0;URL=Registro/error.html">';
+            }
+
+    }
+    else
+    {
+        echo '<meta http-equiv="Refresh" content="0;URL=Registro/error.html">';
+    }
+}
+?>
+
+
+
+
+<!-- Inicio Sesión -->
+<header>	
+
+<a href="#"><logo id="logo"><img src="images/logo.png"></logo></a> 
+
+<form method="POST" action="">
+
+<div style="position: absolute; top: 90px; left: 130px;">
+<input id="usubox" type="text" name="userlogin" size="15" maxlength="20" placeholder="Usuario">
+<input id="usupass" type="password" name="pwlogin" size="15" maxlength="20" placeholder="Contrase&ntilde;a">	
+</div>
+
+
+<input id="button" type="submit" name="iniciarsesion" value="Iniciar Sesión" style="position: relative; left: 1200px; top: -67px;">
+</input><br><br>
+
+</form>
+
+
+<div style="position: relative; top: -15px; left: -10px;">
+	
+<font face="Tw Cen MT" id="forget" size="2"><a href="Registro/recuperacion.html" style="text-decoration: none; color: white;">He olvidado mi cuenta</a></font>
+<font face="Tw Cen MT" id="password" size="2"><a href="#" style="text-decoration: none; color: white;">Cambiar mi contraseña</a></font>
+
+</div>
+
+<font face="Tw Cen MT" id="password" size="2">
+<a href="#" style="text-decoration: none; color: white; position: absolute; left: -760px; top: -40px;">Live too Fast !</a></font>
+
+</header>
+
+
+
+
+<body background="../images/Backgrounds/1.jpg">
+
+
+	<!-- Pagina Blanco-->
+	<div style="position: relative; background-color: #FFFFFF; height: 600px; width: 80%; left: 150px; top: 60px;"></div>
+
+
+	<div style="position: absolute; top: 170px; left: 180px; width: 0%;"><img src="../images/Juegos/Adventure/1.png"></div>
+
+
+
+	<div style="position: relative; top: -450px; left: 700px; width: 20%;"><font face="Tw Cen MT">
+	Titulo: Sonic Adventure Dx<br>
+	Idioma: Español, inglés, Japones<br>
+	Tamaño: 654 Mb<br>
+	Servidor: Mega<br>
+	Genero: acción<br>
+	Año: 1991<br>
+	<br>
+	<br>
+	<br>
+	<a href="https://mega.nz/#!PRxmEaCC!jdM8VAPubYVG_2E3xaVl87AbqKZeogu7kjtanmrLH_w" style="text-decoration: none;">Descargar</a>
+
+    </font></div>
+
+
+	<div style="position: relative; top: -400px; left: 180px; width: 80%;"><font face="Tw Cen MT">
+	Sonic Adventure, la maravilla impactada en un solo disco, disponible para casi todas las plataformas, y Sonic en 3D finalmente apreciado, con unos gráficos<br> 
+	impactantes que jamás imaginarías, el solo pensar en el Sonic 2D y verlo en porfin en 3 dimensiones es algo que no puedes perderte, los stages enormes y llenos<br> 
+	de acción contra los mas duros badniks y robots, personajes como Amy, Tails, y Knuckles también remasterizados y con personalidad, una personalidad que los<br> 
+	caracteriza, es ahora el momento de conocer a Sonic. Sonic Adventure DX, es un juego novedoso que ha llegado para quedarse, la asombrosa adaptación del 2D<bR> 
+	al 3D causa un fuerte impacto entre los fans, y Sonic gana popularidad y atracción, una jugabilidad indiscutible una banda sonora destacable, y una historia<br> 
+	clásica junto a los personajes que ya hemos visto en Sonic Clásicos, ya puedes disfrutarlo y acceder a la descarga y disfrutarlo gracias a Sonic Zone.</font></div>
+
+	
+	<div style="background-position: fixed; position: absolute; top: 600px; left: 700px; width: 0%;"><img src="../images/Juegos/Adventure/2.jpg"></div>
+	<div style="background-position: fixed; position: absolute; top: 600px; left: 900px; width: 0%;"><img src="../images/Juegos/Adventure/3.jpg"></div>
+	<div style="background-image: fixed; position: absolute; top: 600px; left: 500px; width: 0%;"><img src="../images/Juegos/Adventure/4.png"></div>
+	<div style="background-image: fixed; position: absolute; top: 600px; left: 300px; width: 0%;"><img src="../images/Juegos/Adventure/5.png"></div>
+
+
+</body>
+
+<footer>
+
+<center><p id="fotext" style="color: white;">Sonic Zone. diseño hecho por sonic, 2017</p></center>
+
+<img id="facebook" src="../images/face.png"> <font face="Tw Cen MT" id="face" size="3" style="color: white">SonicZone.facebook.com</font>
+<img id="whatsapp" src="../images/whats.png"> <font face="Tw Cen MT" id="num" size="3" style="color: white">+569 66503979</font>
+
+</footer>
+
+
+</html>

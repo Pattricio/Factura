@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Guardar Producto</title>
+
+<script type="text/javascript" src="lib/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript">
+	function guardarProducto(){
+		var productoModel = {
+			id : null,
+			nombre : $("#inNombre").val(),
+			descripcion : $("#inDescripcion").val(),
+			codigo : $("#inCodigo").val(),
+			cantidad : $("#inCantidad").val()
+		};
+		
+		$.ajax({
+			type : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				'accept' : 'application/json'
+			},
+			url : 'rest-services/test/guardarProducto',
+			data : JSON.stringify(productoModel),
+			success : function(resp){
+				if(resp.estado){
+					alert(resp.data);
+				}else{
+					alert(resp.error);
+				}
+			}
+		});
+	
+	}
+	function actualizarProducto(){
+		var productoModel = {
+			id : $("#actId").val(),
+			nombre : $("#actNombre").val(),
+			descripcion : $("#actDescripcion").val(),
+			codigo : $("#actCodigo").val(),
+			cantidad : $("#actCantidad").val()
+		};
+		
+		$.ajax({
+			type : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				'accept' : 'application/json'
+			},
+			url : 'rest-services/test/actualizarProducto',
+			data : JSON.stringify(productoModel),
+			success : function(resp){
+				if(resp.estado){
+					alert(resp.data);
+				}else{
+					alert(resp.error);
+				}
+			}
+		});
+	
+	}
+	
+	function eliminarProducto(){
+		var productoModel = {
+			id : $("#delId").val(),
+			nombre : null,
+			descripcion : null,
+			codigo : null,
+			cantidad : null
+		};
+		
+		$.ajax({
+			type : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				'accept' : 'application/json'
+			},
+			url : 'rest-services/test/eliminarProducto',
+			data : JSON.stringify(productoModel),
+			success : function(resp){
+				if(resp.estado){
+					alert(resp.data);
+				}else{
+					alert(resp.error);
+				}
+			}
+		});
+	
+	}
+	
+	function IngresarEmpresa(){
+		var empresaModel = {
+			id : null,
+			nombre : $("#inemNombre").val(),
+			razonSocial : $("#inemRazonSocial").val(),
+			rut : $("#inemRut").val(),
+			direccion : $("#inemDireccion").val()
+		};
+		
+		$.ajax({
+			type : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				'accept' : 'application/json'
+			},
+			url : 'rest-services/test/guardarEmpresa',
+			data : JSON.stringify(empresaModel),
+			success : function(resp){
+				if(resp.estado){
+					alert(resp.data);
+				}else{
+					alert(resp.error);
+				}
+			}
+		});
+	
+	}
+	
+	function actualizarEmpresa(){
+		var empresaModel = {
+			id : $("#acemId").val(),
+			nombre : $("#acemNombre").val(),
+			razonSocial : $("#acemRazonSocial").val(),
+			rut : $("#acemRut").val(),
+			direccion : $("#acemDireccion").val()
+		};
+		
+		$.ajax({
+			type : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				'accept' : 'application/json'
+			},
+			url : 'rest-services/test/actualizarEmpresa',
+			data : JSON.stringify(empresaModel),
+			success : function(resp){
+				if(resp.estado){
+					alert(resp.data);
+				}else{
+					alert(resp.error);
+				}
+			}
+		});
+	
+	}
+	function eliminarEmpresa(){
+		var empresaModel = {
+			id : $("#elemId").val(),
+			nombre : null,
+			razonSocial : null,
+			rut : null,
+			direccion : null
+		};
+		
+		$.ajax({
+			type : 'POST',
+			headers : {
+				'Content-Type' : 'application/json',
+				'accept' : 'application/json'
+			},
+			url : 'rest-services/test/eliminarEmpresa',
+			data : JSON.stringify(empresaModel),
+			success : function(resp){
+				if(resp.estado){
+					alert(resp.data);
+				}else{
+					alert(resp.error);
+				}
+			}
+		});
+	
+	}
+	  function guardarFactura(){
+		  
+		    var empresaModel = {
+		    		id : null,
+		    		nombre : null,
+		    		razonSocial : null,
+		    		rut : $("#rutEmpresa").val(),
+		    		direccion : null
+		    	};	    
+
+		    var productoModel = {
+		    		id : null,
+		    		nombre : null,
+		    		descripcion : null,
+		    		codigo : $("#codProducto").val(),
+		    		cantidad : $("#canProducto").val()
+		    	};
+		    
+		    var productos = [];
+		    
+		    productos.push(productoModel);
+	  		
+			var facturaModel = {
+					id : null,
+					empresa : empresaModel,
+					productos : productos
+				};
+			
+			$.ajax({
+				type : 'POST',
+				headers : {
+					'Content-Type' : 'application/json',
+					'accept' : 'application/json'
+				},
+				url : 'rest-services/test/guardarFactura',
+				data : JSON.stringify(facturaModel),
+				success : function(resp){
+					if(resp.estado){
+						alert(resp.data);
+					}else{
+						alert(resp.error);
+					}
+				}
+			});
+	  }
+	  
+	  function buscarProducto(){
+			var productoModel = {
+				id : $("#busId").val(),
+				nombre : null,
+				descripcion : null,
+				codigo : null,
+				cantidad : null
+			};
+			
+			$.ajax({
+				type : 'POST',
+				headers : {
+					'Content-Type' : 'application/json',
+					'accept' : 'application/json'
+				},
+				url : 'rest-services/test/buscarProducto',
+				data : JSON.stringify(productoModel),
+				success : function(resp){
+					if(resp.estado){
+						alert(resp.data);
+					}else{
+						alert(resp.error);
+					}
+				}
+			});
+	  }
+	  
+	  function buscarEmpresa(){
+			var empresaModel = {
+				id : $("#busemId").val(),
+				nombre : null,
+				razonSocial : null,
+				rut : null,
+				direccion : null
+			};
+			
+			$.ajax({
+				type : 'POST',
+				headers : {
+					'Content-Type' : 'application/json',
+					'accept' : 'application/json'
+				},
+				url : 'rest-services/test/buscarEmpresa',
+				data : JSON.stringify(empresaModel),
+				success : function(resp){
+					if(resp.estado){
+						alert(resp.data);
+					}else{
+						alert(resp.error);
+					}
+				}
+			});
+	  }
+	  function buscarFactura(){
+		  var facturaModel = {
+					id : $("#busfacId").val(),
+					empresa : null,
+					productos : null
+				};
+			
+			$.ajax({
+				type : 'POST',
+				headers : {
+					'Content-Type' : 'application/json',
+					'accept' : 'application/json'
+				},
+				url : 'rest-services/test/buscarFactura',
+				data : JSON.stringify(facturaModel),
+				success : function(resp){
+					if(resp.estado){
+						alert(resp.data);
+					}else{
+						alert(resp.error);
+					}
+				}
+			});
+	  }
+	  
+</script>
+</head>
+<body>
+
+<h2>Buscar producto por id</h2>
+
+<label>id: </label>
+<input type="text" id="busId" ></input>
+<br>
+<br>
+<button onclick="buscarProducto()">Buscar</button>
+
+<h2>Ingresar producto</h2>
+
+
+<label>Nombre: </label>
+<input type="text" id="inNombre" ></input>
+<br>
+
+<label>Descrición: </label>
+<input type="text" id="inDescripcion" ></input>
+<br>
+
+<label>Codigo: </label>
+<input type="text" id="inCodigo" ></input>
+<br>
+
+<label>Cantidad: </label>
+<input type="number" id="inCantidad" ></input>
+<br>
+<br>
+<button onclick="guardarProducto()">Ingresar Producto</button>
+
+<h2>Actualizar producto por id</h2>
+
+<label>id: </label>
+<input type="text" id="actId" ></input>
+<br>
+
+<label>Nombre: </label>
+<input type="text" id="actNombre" ></input>
+<br>
+
+<label>Descrición: </label>
+<input type="text" id="actDescripcion" ></input>
+<br>
+
+<label>Codigo: </label>
+<input type="text" id="actCodigo" ></input>
+<br>
+
+<label>Cantidad: </label>
+<input type="number" id="actCantidad" ></input>
+<br>
+<br>
+<button onclick="actualizarProducto()">Actualizar Producto</button>
+
+<h2>Borrar producto por id</h2>
+
+<label>id: </label>
+<input type="text" id="delId" ></input>
+<br>
+<br>
+<button onclick="eliminarProducto()">Eliminar Producto</button>
+
+<h2>Buscar Empresa por id</h2>
+
+<label>id: </label>
+<input type="text" id="busemId" ></input>
+<br>
+<br>
+<button onclick="buscarEmpresa()">Buscar</button>
+
+<h2>Ingresar empresa</h2>
+
+
+<label>Nombre: </label>
+<input type="text" id="inemNombre" ></input>
+<br>
+
+<label>Razon social: </label>
+<input type="text" id="inemRazonSocial" ></input>
+<br>
+
+<label>Rut: </label>
+<input type="text" id="inemRut" ></input>
+<br>
+
+<label>Direccion: </label>
+<input type="text" id="inemDireccion" ></input>
+<br>
+<br>
+<button onclick="IngresarEmpresa()">Ingresar Empresa</button>
+
+
+
+<h2>Actualizar empresa por id</h2>
+
+<label>id: </label>
+<input type="text" id="acemId" ></input>
+<br>
+
+<label>Nombre: </label>
+<input type="text" id="acemNombre" ></input>
+<br>
+
+<label>Razon social: </label>
+<input type="text" id="acemRazonSocial" ></input>
+<br>
+
+<label>Rut: </label>
+<input type="text" id="acemRut" ></input>
+<br>
+
+<label>Direccion: </label>
+<input type="text" id="acemDireccion" ></input>
+<br>
+<br>
+<button onclick="actualizarEmpresa()">Actualizar Empresa</button>
+
+<h2>Eliminar Empresa por id</h2>
+
+<label>id: </label>
+<input type="text" id="elemId" ></input>
+<br>
+<br>
+<button onclick="eliminarEmpresa()">Eliminar Empresa</button>
+
+<h2>Ingresar factura</h2>
+
+
+<label>Rut empresa: </label>
+<input type="text" id="rutEmpresa" ></input>
+<br>
+
+<label>Codigo producto: </label>
+<input type="text" id="codProducto" ></input>
+<br>
+
+<label>Cantidad producto: </label>
+<input type="text" id="canProducto" ></input>
+<br>
+<br>
+<button onclick="guardarFactura()">Ingresar factura</button>
+
+<h2>Buscar factura por id</h2>
+
+<label>id: </label>
+<input type="text" id="busfacId" ></input>
+<br>
+<br>
+<button onclick="buscarFactura()">Buscar</button>
+</body>
+</html>
